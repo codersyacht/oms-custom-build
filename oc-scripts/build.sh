@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cp ../sandbox.prop /opt/ssfs/runtime/sandbox.prop
 cd /opt/ssfs/runtime/container-scripts/imagebuild
 ./generateImages.sh --MODE=app --WAR_FILES=smcfs --EXPORT=false
 echo "Custom build completed"
