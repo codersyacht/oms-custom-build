@@ -9,7 +9,7 @@ echo "Custom build completed"
 buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom tagging completed"
 echo "Going to sleep"
-sleep 1800
+sleep 900
 echo "Woke after 15 minutes"
 
 
