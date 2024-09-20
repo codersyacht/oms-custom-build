@@ -11,6 +11,7 @@ buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom tagging completed"
 echo "Going to sleep"
 echo "Woke after 15 minutes"
-buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah push --tls-verify=false ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+# buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom Image Push conmpleted"
 sleep 900
