@@ -3,7 +3,7 @@
 cp sandbox.prop /opt/ssfs/runtime/sandbox.prop
 echo "sandbox.prop copy completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-buildah login --username codersyacht --password Call2@Allah docker.io
+# buildah login --username codersyacht --password Call2@Allah docker.io
 ./generateImages.sh --MODE=agent --EXPORT=false
 echo "Custom build completed"
 (echo "{ \"auths\": " ; sudo cat $PUSH_DOCKERCFG_PATH/.dockercfg ; echo "}") > /tmp/.dockercfg
