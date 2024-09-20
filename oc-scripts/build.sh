@@ -13,3 +13,4 @@ echo "Going to sleep"
 echo "Woke after 15 minutes"
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom Image Push conmpleted"
+sleep 900
