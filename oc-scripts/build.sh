@@ -9,7 +9,7 @@ echo "Custom build completed"
 buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom tagging completed"
 buildah login --username codersyacht --password Call2@Allah docker.io
-#buildah push --tls-verify=false ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
-buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah push --tls-verify=false ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+#buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom Image Push conmpleted"
 sleep 900
