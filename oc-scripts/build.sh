@@ -5,10 +5,11 @@ echo "sandbox.prop copy completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
 sudo -u omsuser /bin/bash << 'EOF'
 source ~/.bashrc
-./generateImages.sh --REPO=localhost --MODE=app --WAR_FILES=smcfs --EXPORT=false
+#./generateImages.sh --REPO=localhost --MODE=app --WAR_FILES=smcfs --EXPORT=false
+./generateImages.sh --MODE=agent --EXPORT=false
 echo "Custom build completed"
 (echo "{ \"auths\": " ; sudo cat $PUSH_DOCKERCFG_PATH/.dockercfg ; echo "}") > /tmp/.dockercfg
-buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom tagging completed"
 #buildah push --tls-verify=false ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
