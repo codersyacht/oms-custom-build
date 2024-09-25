@@ -2,8 +2,9 @@
 
 cp sandbox.prop /opt/ssfs/runtime/sandbox.prop
 echo "sandbox.prop copy completed"
-cd /opt/ssfs/runtime/container-scripts/imagebuild
 sudo -u omsuser /bin/bash << 'EOF'
+source ~/.bashrc
+cd /opt/ssfs/runtime/container-scripts/imagebuild
 #./generateImages.sh --REPO=localhost --MODE=app --WAR_FILES=smcfs --EXPORT=false
 ./generateImages.sh --REPO=localhost --MODE=agent --EXPORT=false
 echo "Custom build completed"
