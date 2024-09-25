@@ -9,7 +9,9 @@ cd /opt/ssfs/runtime/container-scripts/imagebuild
 ./generateImages.sh --REPO=localhost --MODE=agent --EXPORT=false
 echo "Custom build completed"
 cat /var/run/secrets/openshift.io/push/.dockerconfigjson
-(echo "{ \"auths\": " ; sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson ; echo "}") > /tmp/.dockercfg
+#(echo "{ \"auths\": " ; sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson ; echo "}") > /tmp/.dockercfg
+sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson > /tmp/.dockercfg
+cat /tmp/.dockercfg
 sleep 450
 buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom tagging completed"
