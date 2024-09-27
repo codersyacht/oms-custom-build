@@ -15,6 +15,10 @@ cd /opt/ssfs/runtime/container-scripts/imagebuild
 ./generateImages.sh --REPO=localhost --MODE=agent --EXPORT=false
 echo "Custom build completed"
 sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson > /tmp/.dockercfg
+buildah tag om-base:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+export OUTPUT_IMAGE=codersyacht/oms-agent:v1
+buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+export OUTPUT_IMAGE=codersyacht/oms-app:v1
 buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom tagging completed"
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
