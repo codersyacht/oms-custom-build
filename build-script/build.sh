@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir -p /opt/ssfs/customization
-cp ../* /opt/ssfs/customization 
+cp -r ../* /opt/ssfs/customization 
 chmod 777 -R /opt/ssfs/customization
 chown omsuser:omsuser -R /opt/ssfs/customization
 sudo -E -u omsuser /bin/bash << 'EOF'
