@@ -1,9 +1,8 @@
 #!/bin/bash
-sudo -u omsuser /bin/bash << 'EOF'
-source ~/.bashrc
-sleep 900
 cp sandbox.prop /opt/ssfs/runtime/properties/sandbox.prop
 echo "sandbox.cfg copy completed"
+sudo -u omsuser /bin/bash << 'EOF'
+source ~/.bashrc
 cd /opt/ssfs/runtime/bin
 ./install3rdParty.sh yfsextn 1_0 -j /root/sources/oms-custom-build/jars/* -targetJVM EVERY
 echo "3rdPsarty jars installation completed"
