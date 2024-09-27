@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo -u omsuser /bin/bash << 'EOF'
-source ~/.bashrc
+#source ~/.bashrc
+sleep 900
 cp sandbox.prop /opt/ssfs/runtime/properties/sandbox.prop
 echo "sandbox.cfg copy completed"
 cd /opt/ssfs/runtime/bin
