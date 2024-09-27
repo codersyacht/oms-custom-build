@@ -12,7 +12,7 @@ cd /opt/ssfs/runtime/bin
 ./install3rdParty.sh yfsextn 1_0 -j /opt/ssfs/customization/jars/* -targetJVM EVERY
 echo "3rdParty jars installation completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-buildah login docker.io --authfile=/tmp/.dockercfg
+buildah login --authfile=/tmp/.dockercfg docker.io
 ./generateImages.sh --MODE=app --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
 echo "Custom build completed"
 buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
