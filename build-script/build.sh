@@ -11,10 +11,10 @@ cd /opt/ssfs/runtime/bin
 ./install3rdParty.sh yfsextn 1_0 -j /opt/ssfs/customization/jars/* -targetJVM EVERY
 echo "3rdParty jars installation completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-./generateImages.sh --MODE=base,agent --REPO=localhost --DEV_MODE=true --EXPORT=false
+./generateImages.sh --MODE=base  --EXPORT=false
 echo "Custom build completed"
 sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson > /tmp/.dockercfg
-buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah tag om-base:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 # export OUTPUT_IMAGE=codersyacht/oms-app:v1
 # buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
