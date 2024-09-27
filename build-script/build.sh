@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp sandbox.prop /opt/ssfs/runtime/sandbox.prop
+cp sandbox.prop /opt/ssfs/runtime/properties/sandbox.prop
 echo "sandbox.prop copy completed"
 #sudo -u omsuser /bin/bash << 'EOF'
 #source ~/.bashrc
