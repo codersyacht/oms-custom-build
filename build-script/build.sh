@@ -10,11 +10,13 @@ source ~/.bashrc
 cd /opt/ssfs/runtime/container-scripts/imagebuild
 
 sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson > /tmp/.dockercfg
+echo "docker credentials"
 sudo cat /tmp/.dockercfg
+sleep 100
 # Generate the images
 ./generateImages.sh --REPO=localhost --MODE=app --WAR_FILES=sma --EXPORT=false
 echo "Image generated"
 echo ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
-buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Push completed"
