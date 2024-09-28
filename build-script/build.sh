@@ -2,7 +2,7 @@
 
 # add your customization script here.
 
-sudo -u omsuser /bin/bash << 'EOF'
+sudo -E -u omsuser /bin/bash << 'EOF'
 
 source ~/.bashrc
 
