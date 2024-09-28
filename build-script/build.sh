@@ -10,10 +10,9 @@ cp /opt/ssfs/customization/properties/sandbox.cfg /opt/ssfs/runtime/properties/s
 echo "sandbox.cfg copy completed"
 cd /opt/ssfs/runtime/bin
 ./install3rdParty.sh yfsextn 1_0 -j /opt/ssfs/customization/jars/* -targetJVM EVERY
-echo "3rdParty jars installation completed"
-sleep 100
+echo "3rd party jars installation completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-./generateImages.sh --MODE=app,agent --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
+./generateImages.sh --MODE=app,agent --REPO=localhost --WAR_FILES=smcfs,sbc,sma --DEV_MODE=true --EXPORT=false
 echo "Custom build completed"
 echo "Image Name : " ${OUTPUT_IMAGE}
 buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
