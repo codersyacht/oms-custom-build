@@ -13,7 +13,7 @@ cd /opt/ssfs/runtime/bin
 echo "3rdParty jars installation completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
 buildah login --authfile=/tmp/.dockercfg docker.io
-./generateImages.sh --MODE=app,agent --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
+./generateImages.sh --MODE=app --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
 echo "Custom build completed"
 buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
