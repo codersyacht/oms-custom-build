@@ -18,7 +18,7 @@ echo "Custom build completed"
 echo "Image Name : " ${OUTPUT_IMAGE}
 buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
-sudo export OUTPUT_IMAGE="oms-agent:v1"
+export OUTPUT_IMAGE="codersyacht/oms-agent:v1"
 echo "Image Name : " ${OUTPUT_IMAGE}
 buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
