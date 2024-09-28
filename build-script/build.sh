@@ -3,7 +3,7 @@ mkdir -p /opt/ssfs/customization
 cp -r ../* /opt/ssfs/customization 
 chmod 777 -R /opt/ssfs/customization
 chown omsuser:omsuser -R /opt/ssfs/customization
-sudo -E -u omsuser /bin/bash << 'EOF'
+sudo -E -u omsuser /bin/bash
 source ~/.bashrc
 sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson > /tmp/.dockercfg
 cp /opt/ssfs/customization/properties/sandbox.cfg /opt/ssfs/runtime/properties/sandbox.cfg
@@ -13,11 +13,14 @@ cd /opt/ssfs/runtime/bin
 echo "3rdParty jars installation completed"
 sleep 100
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-./generateImages.sh --MODE=app --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
-#./generateImages.sh --MODE=agent --REPO=localhost --EXPORT=false
+./generateImages.sh --MODE=app,agent --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
 echo "Custom build completed"
+echo "Image Name : " ${OUTPUT_IMAGE}
 buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
-# buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+sudo export OUTPUT_IMAGE="oms-agent:v1"
+echo "Image Name : " ${OUTPUT_IMAGE}
+buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom Image Push conmpleted"
 sleep 900
