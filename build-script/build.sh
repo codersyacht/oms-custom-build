@@ -11,8 +11,8 @@ echo "sandbox.cfg copy completed"
 cd /opt/ssfs/runtime/bin
 ./install3rdParty.sh yfsextn 1_0 -j /opt/ssfs/customization/jars/* -targetJVM EVERY
 echo "3rdParty jars installation completed"
+sleep 100
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-buildah login --authfile=/tmp/.dockercfg docker.io
 # ./generateImages.sh --MODE=app --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
 ./generateImages.sh --MODE=agent --REPO=localhost --EXPORT=false
 echo "Custom build completed"
