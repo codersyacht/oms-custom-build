@@ -13,11 +13,11 @@ cd /opt/ssfs/runtime/bin
 echo "3rdParty jars installation completed"
 sleep 100
 cd /opt/ssfs/runtime/container-scripts/imagebuild
-# ./generateImages.sh --MODE=app --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
-./generateImages.sh --MODE=agent --REPO=localhost --EXPORT=false
+./generateImages.sh --MODE=app --REPO=localhost --WAR_FILES=smcfs --DEV_MODE=true --EXPORT=false
+#./generateImages.sh --MODE=agent --REPO=localhost --EXPORT=false
 echo "Custom build completed"
-# buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
-buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+buildah tag om-app:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
+# buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 echo "Custom Image Push conmpleted"
 sleep 900
