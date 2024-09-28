@@ -6,9 +6,6 @@ sudo -E -u omsuser /bin/bash << 'EOF'
 
 source ~/.bashrc
 
-export REPO=${REPO:-"localhost"}
-export MODE=${MODE:-"agent"}
-export WAR_FILES=${WAR_FILES:-"smcfs"}
 
 # Go to the directory where the script is located
 cd /opt/ssfs/runtime/container-scripts/imagebuild
@@ -16,7 +13,7 @@ cd /opt/ssfs/runtime/container-scripts/imagebuild
 sudo cat $PUSH_DOCKERCFG_PATH/.dockerconfigjson > /tmp/.dockercfg
 echo /tmp/.dockercfg
 # Generate the images
-./generateImages.sh --REPO=$REPO --MODE=$MODE --WAR_FILES=$WAR_FILES --EXPORT=false
+./generateImages.sh --REPO=localhost --MODE=app --WAR_FILES=sma --EXPORT=false
 echo "Image generated"
 echo ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
