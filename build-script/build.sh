@@ -10,6 +10,7 @@ cp -f /opt/ssfs/customization/properties/sandbox.cfg /opt/ssfs/runtime/propertie
 echo "sandbox.cfg copy completed"
 cd /opt/ssfs/runtime/bin
 ./setupfiles.sh
+echo "setupfiles execution completed"
 ./install3rdParty.sh yfsextn 1_0 -j /opt/ssfs/customization/jars/* -targetJVM EVERY
 echo "3rd party jars installation completed"
 cd /opt/ssfs/runtime/container-scripts/imagebuild
