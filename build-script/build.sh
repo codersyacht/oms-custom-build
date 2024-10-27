@@ -25,5 +25,4 @@ export OUTPUT_IMAGE=${agentimage}
 echo "Tagging and pusing image : " ${OUTPUT_IMAGE}
 buildah tag om-agent:10.0 ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
 buildah push --tls-verify=false --authfile=/tmp/.dockercfg ${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}
-echo "Custom Imagea Push conmpleted"
-sleep 100
+echo "Custom Images Push conmpleted"
