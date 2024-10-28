@@ -1,0 +1,11 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: om-base
+  namespace: oms-build
+spec:
+  tags:
+    - name: 10.0.2409.0-amd64
+      from:
+        kind: DockerImage
+        name: cp.icr.io/cp/ibm-oms-enterprise/om-base:10.0.2409.0-amd64
