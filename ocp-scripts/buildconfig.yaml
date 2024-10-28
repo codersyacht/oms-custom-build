@@ -1,0 +1,41 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: omsbuild
+  namespace: oms-build
+spec:
+  serviceAccount: default
+  nodeSelector: {}
+  source:
+    type: Git
+    git:
+      uri: "https://github.com/codersyacht/oms-custom-build.git"
+    sourceSecret:
+      name: git-key
+    contextDir: build-script
+  strategy:
+    type: Custom
+    license:
+      accept: true
+    customStrategy:
+      forcePull: true
+      exposeDockerSocket: true
+      from:
+        kind: ImageStreamTag
+        name: om-base:10.0.2409.0-amd64
+        namespace: oms-build
+      env:
+       - name: OMS_RHOS_CUSTOM_BUILD
+         value: "true"
+       - name: LICENSE
+         value: "accept"
+       - name: agentimage
+         value: codersyacht/oms-agent:v1
+  output:
+    to:
+      kind: DockerImage
+      name: docker.io/codersyacht/oms-app:v1
+    pushSecret:
+      name: docker-key
+status:
+  lastVersion: 0
