@@ -1,5 +1,5 @@
-kind: ImageStream
 apiVersion: image.openshift.io/v1
+kind: ImageStream
 metadata:
   name: om-base
   namespace: oms-build
