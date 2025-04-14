@@ -30,11 +30,11 @@ spec:
        - name: LICENSE
          value: "accept"
        - name: agentimage
-         value: codersyacht/oms-agent:v1
+         value: codersyacht/oms-agent:10.0.2503.1-amd64-db2-v1
   output:
     to:
       kind: DockerImage
-      name: docker.io/codersyacht/oms-app:v1
+      name: docker.io/codersyacht/oms-app:10.0.2503.1-amd64-db2-v1
     pushSecret:
       name: docker-key
 status:
