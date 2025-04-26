@@ -22,7 +22,7 @@ spec:
       exposeDockerSocket: true
       from:
         kind: ImageStreamTag
-        name: om-base:10.0.2409.0-amd64
+        name: om-base:10.0.2503.1-amd64
         namespace: oms-build
       env:
        - name: OMS_RHOS_CUSTOM_BUILD
