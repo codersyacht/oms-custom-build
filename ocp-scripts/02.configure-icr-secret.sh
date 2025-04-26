@@ -1,4 +1,4 @@
-export ENTITLEDKEY="$<IBM-Entitlement-Key>"
+export ENTITLEDKEY="$(<IBM-Entitlement-Key>)"
 
 export NAMESPACE="oms-build"
 
