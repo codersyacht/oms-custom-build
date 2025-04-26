@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Beginning customization"
 mkdir -p /opt/ssfs/customization
 cp -r ../* /opt/ssfs/customization 
 chmod 777 -R /opt/ssfs/customization
